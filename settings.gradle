@@ -1,0 +1,3 @@
+rootProject.name = "VisitCareSDK"
+include ':app'
+include ':video-call'
