@@ -3,9 +3,13 @@ package com.example.video_call.activity;
 import android.Manifest;
 import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.media.AudioManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -14,6 +18,7 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.ScaleAnimation;
 import android.widget.Button;
@@ -39,8 +44,8 @@ import com.example.video_call.network.APIServiceInstance;
 import com.example.video_call.network.ApiService;
 import com.example.video_call.presenter.TwillioVideoPresenter;
 import com.example.video_call.util.AudioHelper;
-import com.example.video_call.util.ViewExtensionKt;
 import com.example.video_call.util.CameraCapturerCompat;
+import com.example.video_call.util.ViewExtensionKt;
 import com.example.video_call.view.TwillioVideoView;
 import com.twilio.audioswitch.AudioDevice;
 import com.twilio.audioswitch.AudioSwitch;
@@ -197,13 +202,10 @@ public class TwillioVideoCallActivity extends AppCompatActivity implements Twill
         isDebug = getIntent().getBooleanExtra("isDebug", false);
 
 
-
-
         if (authToken != null) {
             if (isDebug) {
                 apiService = APIServiceInstance.INSTANCE.getApiService("https://api.getvisitapp.xyz/v4/", getApplicationContext(), authToken, true);
-            }
-            else {
+            } else {
                 apiService = APIServiceInstance.INSTANCE.getApiService("https://api.getvisitapp.com/v4/", getApplicationContext(), authToken, true);
             }
 
@@ -1231,23 +1233,53 @@ public class TwillioVideoCallActivity extends AppCompatActivity implements Twill
 
     @Override
     public void onBackPressed() {
-        new AlertDialog.Builder(this)
-                .setTitle("End Video Call ?")
-                .setMessage("Are you sure you want to exit?")
-                .setNegativeButton(android.R.string.no, null)
-                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 
-                    public void onClick(DialogInterface arg0, int arg1) {
-                        userEndCall = true;
-                        if (room != null) {
-                            room.disconnect();
-                            finish();
-                        } else {
-                            //twillioVideoPresenter.endVideoCall(sessionId);
-                            finish();
-                        }
-                    }
-                }).create().show();
+        Dialog dialog = new Dialog(this);
+        dialog.setContentView(R.layout.end_your_call_dialog);
+        TextView cancel = dialog.findViewById(R.id.cancel_tv);
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        TextView confirm = dialog.findViewById(R.id.continue_tv);
+        confirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                userEndCall = true;
+                if (room != null) {
+                    room.disconnect();
+                    dialog.dismiss();
+                    finish();
+                } else {
+                    //twillioVideoPresenter.endVideoCall(sessionId);
+                    dialog.dismiss();
+                    finish();
+                }
+            }
+        });
+
+
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        dialog.getWindow().setLayout(
+                (int) (Resources.getSystem().getDisplayMetrics().widthPixels * 0.9),
+                WindowManager.LayoutParams.WRAP_CONTENT);
+
+        dialog.show();
+
+
+//        new AlertDialog.Builder(this)
+//                .setTitle("End Video Call ?")
+//                .setMessage("Are you sure you want to exit?")
+//                .setNegativeButton(android.R.string.no, null)
+//                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+//
+//                    public void onClick(DialogInterface arg0, int arg1) {
+//
+//                    }
+//                }).create().show();
     }
 
 
