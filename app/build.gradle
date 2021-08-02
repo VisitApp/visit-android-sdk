@@ -49,7 +49,7 @@ android {
 dependencies {
 //    implementation project(':video-call')
 
-    implementation files('video-call-release.aar')
+    implementation files('video-call-debug.aar')
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.6.0'

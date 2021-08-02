@@ -3,6 +3,7 @@ package com.example.video_call.activity
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.text.Html
@@ -25,15 +26,15 @@ class SdkWebviewActivity : AppCompatActivity(), AdvancedWebView.Listener,
     VideoCallListener {
 
     lateinit var binding: SdkWebView
-   lateinit var url :String
-   var isDebug:Boolean = false
+    lateinit var url: String
+    var isDebug: Boolean = false
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_sdk)
         binding.infoView.setVisibility(View.GONE)
-       url = intent.extras!!.getString("url")!!
+        url = intent.extras!!.getString("url")!!
         isDebug = intent.extras!!.getBoolean("isDebug");
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
@@ -64,10 +65,6 @@ class SdkWebviewActivity : AppCompatActivity(), AdvancedWebView.Listener,
         //Log.d(TAG, "onCreate: " + Visit.getInstance().getSessionManager().getAuthToken());
 
 
-
-
-
-
         binding.webview.loadUrl(url)
 //        else {
 //            mWebView.loadData(html_2,"text/html; charset=utf-8", "UTF-8");
@@ -87,7 +84,22 @@ class SdkWebviewActivity : AppCompatActivity(), AdvancedWebView.Listener,
 
     }
 
-    override fun onDownloadRequested(url: String?, suggestedFilename: String?, mimeType: String?, contentLength: Long, contentDisposition: String?, userAgent: String?) {
+    override fun onDownloadRequested(
+        url: String?,
+        suggestedFilename: String?,
+        mimeType: String?,
+        contentLength: Long,
+        contentDisposition: String?,
+        userAgent: String?
+    ) {
+
+        try {
+            val uri = Uri.parse(url)
+            startActivity(Intent(Intent.ACTION_VIEW, uri))
+
+        } catch (e: Exception) {
+
+        }
 
     }
 
@@ -118,7 +130,6 @@ class SdkWebviewActivity : AppCompatActivity(), AdvancedWebView.Listener,
             // listener.transactionSuccess(decodeString(response));
             listener!!.startVideoCall(sessionId, consultationId, authToken)
         }
-
 
 
         @Throws(JSONException::class)
@@ -152,7 +163,7 @@ class SdkWebviewActivity : AppCompatActivity(), AdvancedWebView.Listener,
                     if (binding.webview.canGoBack()) {
                         binding.webview.goBack()
                         Log.d("Webview Url", binding.webview.url.toString())
-                        if (binding.webview.url!!.contains("home")){
+                        if (binding.webview.url!!.contains("home")) {
                             finish()
                         }
                     } else {
