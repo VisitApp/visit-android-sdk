@@ -9,8 +9,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val url = "https://vsyt.me/m/1XFjA45h"
-        IntiateSdk.s(this, url, false)
+        val prodMagicLink = "https://vsyt.me/m/1XFjA45h"
+        val debugLink = "https://care.getvisitapp.xyz/"
+        IntiateSdk.s(this, debugLink, false)
 
     }
 }
