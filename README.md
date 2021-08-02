@@ -45,3 +45,6 @@
     For Production:
     
         `IntiateSdk.s(this, "webview url", false);`
+        
+___
+Use `app-debug.apk` file to test sdk festure in Stage.
