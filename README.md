@@ -7,7 +7,7 @@
 ## How to use
 
 ### Gradle Setup:
-```1.
+```
 dependencies {  
         implementation 'com.github.VisitApp:visit-android-sdk:v1.12'   
  }  
@@ -15,6 +15,7 @@ dependencies {
 
 
  Add the following dependencies inside the `build.gradle` of the module using the `.aar` file:
+ 
     ```
     implementation 'com.twilio:video-android:5.10.1'
     implementation 'com.twilio:audioswitch:1.0.0'
