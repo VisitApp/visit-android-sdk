@@ -9,14 +9,14 @@ android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
 
-    signingConfigs {
-        release {
-            storeFile file('C:\\Users\\chinm\\AndroidStudioProjects\\VisitCareSDK\\release.jks')
-            storePassword 'QWERTY12345'
-            keyAlias 'VISIT'
-            keyPassword 'QWERTY12345'
-        }
-    }
+//    signingConfigs {
+//        release {
+//            storeFile file('C:\\Users\\chinm\\AndroidStudioProjects\\VisitCareSDK\\release.jks')
+//            storePassword 'QWERTY12345'
+//            keyAlias 'VISIT'
+//            keyPassword 'QWERTY12345'
+//        }
+//    }
     defaultConfig {
         minSdkVersion 16
         targetSdkVersion 30
@@ -31,7 +31,7 @@ android {
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.release
+//            signingConfig signingConfigs.release
 
         }
     }
