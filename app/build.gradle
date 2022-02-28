@@ -7,7 +7,7 @@ plugins {
 android {
     signingConfigs {
         release {
-            storeFile file('C:\\Users\\chinm\\AndroidStudioProjects\\VisitCareSDK\\release.jks')
+            storeFile file('C:\\Users\\Chinmay\\AndroidStudioProjects\\visit-android-sdk\\release.jks')
             storePassword 'QWERTY12345'
             keyAlias 'VISIT'
             keyPassword 'QWERTY12345'
