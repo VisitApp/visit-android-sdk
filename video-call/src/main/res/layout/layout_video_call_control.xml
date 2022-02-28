@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:blurkit="http://schemas.android.com/apk/res-auto"
-    xmlns:app="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/parent"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -55,7 +54,7 @@
         android:layout_alignParentRight="true"
         android:layout_marginTop="20dp"
         android:layout_marginRight="20dp"
-        blurkit:srcCompat="@drawable/ic_call_cut" />
+        app:srcCompat="@drawable/ic_call_cut" />
 
     <View
         android:id="@+id/line"
@@ -82,7 +81,7 @@
             android:id="@+id/local_video_action_fab"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            blurkit:srcCompat="@drawable/ic_video_on" />
+            app:srcCompat="@drawable/ic_video_on" />
 
 
         <View
@@ -95,7 +94,7 @@
             android:id="@+id/mute_action_fab"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            blurkit:srcCompat="@drawable/ic_mic_on" />
+            app:srcCompat="@drawable/ic_mic_on" />
 
         <View
             android:layout_width="0dp"
@@ -107,7 +106,7 @@
             android:id="@+id/switch_camera_action_fab"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            blurkit:srcCompat="@drawable/ic_call_mute" />
+            app:srcCompat="@drawable/ic_call_mute" />
 
     </LinearLayout>
 
