@@ -15,8 +15,7 @@ dependencies {
 
 
  Add the following dependencies inside the `build.gradle` of the module using the `.aar` file:
- 
-    ```
+ ```
     implementation 'com.twilio:video-android:5.10.1'
     implementation 'com.twilio:audioswitch:1.0.0'
 
