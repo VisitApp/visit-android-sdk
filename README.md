@@ -5,17 +5,17 @@
 2. Min SDK 16
 
 ## How to use
-1. * Copy the `video-call-release.aar` present inside `app/video-call-release.arr` and paste in the inside the module where you like to use it.
-     Or 
-   * You can clone the repo and inside android studio `Build->Rebuild`, a new .aar file will be generated inside `VisitCareSDK\video-call\build\outputs\aar\`
+
+### Gradle Setup:
+```
+dependencies {  
+        implementation 'com.github.VisitApp:visit-android-sdk:v1.12'   
+ }  
+ ``` 
 
 
-2. Include the .aar file in `build.gradle` of the module where it will get used 
-
-    `implementation files('video-call-release.aar')`
-
-3. Add the following dependencies inside the `build.gradle` of the module using the `.aar` file:
-    ```
+ Add the following dependencies inside the `build.gradle` of the module using the `.aar` file:
+ ```
     implementation 'com.twilio:video-android:5.10.1'
     implementation 'com.twilio:audioswitch:1.0.0'
 
