@@ -10,7 +10,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val prodMagicLink = "https://web.getvisitapp.com/"
-//        val debugLink = "https://care.getvisitapp.xyz/"
         IntiateSdk.s(this, prodMagicLink, false)
 
     }
