@@ -89,7 +89,7 @@ afterEvaluate {
 
                 groupId = 'com.getvisitapp'
                 artifactId = 'videocall'
-                version = '1.14'
+                version = '1.15'
             }
         }
     }
