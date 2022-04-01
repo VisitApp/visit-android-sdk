@@ -145,6 +145,13 @@ class SdkWebviewActivity : AppCompatActivity(), AdvancedWebView.Listener,
                 JSONObject(Html.fromHtml(response).toString())
             }
         }
+
+        @JavascriptInterface
+        @Throws(JSONException::class)
+        fun closeView() {
+            Log.d("mytag","closeView() called")
+            listener!!.closeView()
+        }
     }
 
     override fun startVideoCall(sessionId: Int, consultationId: Int, authToken: String?) {
@@ -158,6 +165,10 @@ class SdkWebviewActivity : AppCompatActivity(), AdvancedWebView.Listener,
         intent.putExtra("consultationId", consultationId)
         intent.putExtra("authToken", authToken)
         startActivity(intent)
+    }
+
+    override fun closeView() {
+        finish()
     }
 
 
