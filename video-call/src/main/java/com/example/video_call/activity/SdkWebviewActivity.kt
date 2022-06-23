@@ -1,7 +1,9 @@
 package com.example.video_call.activity
 
+import android.Manifest
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Build
@@ -16,6 +18,7 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.example.video_call.R
 import im.delight.android.webview.AdvancedWebView
 import org.json.JSONException
@@ -29,6 +32,7 @@ class SdkWebviewActivity : AppCompatActivity(), AdvancedWebView.Listener,
 
     lateinit var url: String
     var isDebug: Boolean = false
+    val LOCATION_PERMISSION_REQUEST_CODE = 787
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -152,6 +156,13 @@ class SdkWebviewActivity : AppCompatActivity(), AdvancedWebView.Listener,
             Log.d("mytag","closeView() called")
             listener!!.closeView()
         }
+
+        @JavascriptInterface
+        fun getLocationPermissions() {
+            Log.d("mytag", "getLocationPermissions() called.")
+            listener!!.askForLocationPermission()
+        }
+
     }
 
     override fun startVideoCall(sessionId: Int, consultationId: Int, authToken: String?) {
@@ -169,6 +180,19 @@ class SdkWebviewActivity : AppCompatActivity(), AdvancedWebView.Listener,
 
     override fun closeView() {
         finish()
+    }
+
+    override fun askForLocationPermission() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+            != PackageManager.PERMISSION_GRANTED
+        ) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                requestPermissions(
+                    arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
+                    LOCATION_PERMISSION_REQUEST_CODE
+                )
+            }
+        }
     }
 
 
@@ -190,6 +214,17 @@ class SdkWebviewActivity : AppCompatActivity(), AdvancedWebView.Listener,
             }
         }
         return super.onKeyDown(keyCode, event)
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        when (requestCode) {
+            LOCATION_PERMISSION_REQUEST_CODE -> {}
+        }
     }
 
 
