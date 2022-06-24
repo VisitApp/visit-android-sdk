@@ -51,7 +51,7 @@ class SdkWebviewActivity : AppCompatActivity(), AdvancedWebView.Listener,
         }
 
         webview.setListener(this, this)
-        webview.setGeolocationEnabled(false)
+        webview.setGeolocationEnabled(true)
         webview.setMixedContentAllowed(true)
         webview.setCookiesEnabled(true)
         webview.setThirdPartyCookiesEnabled(true)
