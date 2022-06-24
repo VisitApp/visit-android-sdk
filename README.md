@@ -9,7 +9,7 @@
 ### Gradle Setup:
 ```
 dependencies {  
-        implementation 'com.github.VisitApp:visit-android-sdk:v1.18'   
+        implementation 'com.github.VisitApp:visit-android-sdk:1.19'   
  }  
  ``` 
 
