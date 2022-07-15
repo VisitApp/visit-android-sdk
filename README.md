@@ -12,9 +12,8 @@ dependencies {
         implementation 'com.github.VisitApp:visit-android-sdk:1.19'   
  }  
  ``` 
+These dependencies are needed for smooth functioning of SDK.
 
-
- Add the following dependencies inside the `build.gradle` of the module using the `.aar` file:
  ```
     implementation 'com.twilio:video-android:5.10.1'
     implementation 'com.twilio:audioswitch:1.0.0'
