@@ -28,7 +28,6 @@
 
     <application>
 
-        <activity android:name=".activity.TwillioVideoCallActivity" />
         <activity android:name=".activity.SdkWebviewActivity" />
 
     </application>

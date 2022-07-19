@@ -167,15 +167,6 @@ class SdkWebviewActivity : AppCompatActivity(), AdvancedWebView.Listener,
 
     override fun startVideoCall(sessionId: Int, consultationId: Int, authToken: String?) {
 
-        val intent = Intent(
-            this,
-            TwillioVideoCallActivity::class.java
-        )
-        intent.putExtra("isDebug", isDebug)
-        intent.putExtra("sessionId", sessionId)
-        intent.putExtra("consultationId", consultationId)
-        intent.putExtra("authToken", authToken)
-        startActivity(intent)
     }
 
     override fun closeView() {
