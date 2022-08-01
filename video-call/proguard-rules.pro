@@ -4,7 +4,7 @@
 -keep class com.twilio.video.** { *; }
 -keep class com.twilio.common.** { *; }
 -keepattributes InnerClasses
-
+-keeppackagenames
 
 
 -keep public class * implements com.bumptech.glide.module.GlideModule
