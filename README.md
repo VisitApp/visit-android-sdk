@@ -9,7 +9,7 @@
 ### Gradle Setup:
 ```
 dependencies {  
-        implementation 'com.github.VisitApp:visit-android-sdk:1.19'   
+        implementation 'com.github.VisitApp:visit-android-sdk:1.24'   
  }  
  ``` 
 These dependencies are needed for smooth functioning of SDK.
